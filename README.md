@@ -73,3 +73,35 @@ A aplicação sobe em `http://localhost:5173` (ou porta indicada no terminal).
 
 - [Definição da PoC](docs/DEFINICAO_POC.md)
 - [Contrato de API](docs/API.md)
+
+## Banco de Dados
+### BD_AprovaMat
+Servirá de ferramenta para desenvolvimento da funcionalidade de Banco Dados a ser utilizada no trabalho em equipe do curso de ADS do SENAC.
+
+
+### BD_AprovaMat 📊 
+
+Este repositório contém o banco de dados do projeto AprovaMat. Abaixo estão as instruções para configurar o ambiente de desenvolvimento local.
+
+### 🛠️ Pré-requisitos e Ferramentas
+* **MySQL Server** (Versão 8.0 ou superior)
+* **MySQL Workbench** (ou DBeaver / ferramenta de sua preferência)
+* **Plano Gratuito de MySQL do Aiven** (O Aiven é uma plataforma de nuvem que oferece ferramentas de dados de código aberto (Open Source) de forma totalmente gerenciada.)
+* **VS Code** (Visual Studio Code)
+
+### ⚙️ Configuração do Banco de Dados (MySQL)
+
+### 1. Variáveis de Ambiente (.env)
+As variáveis de ambiente funcionam exatamente em conjunto com o seu código Python. O arquivo .env atua como um "cofre de segurança" secreto ao lado do seu arquivo de código. O Python lê esse arquivo, carrega as credenciais para a memória do computador e as entrega para o conector do MySQL na hora de fazer o envio ou a requisição dos dados.
+Para conectar a aplicação ao banco de dados, crie um arquivo `.env` na raiz do seu projeto local (este arquivo **não** deve ser enviado ao GitHub) com as seguintes credenciais:
+
+```env
+DB_HOST=mysql-29052f0f-aprovamat26.c.aivencloud.com
+DB_PORT=22464
+DB_USER=avnadmin
+DB_PASS= digite sua senha
+DB_NAME=aprova_mat
+SSL_CA=caminho_ssl
+```
+
+### 2. Inicializando o Banco de Dados
