@@ -138,9 +138,9 @@ Para conectar ao banco em nuvem do Aiven, o projeto exige o uso de SSL:
 ## 🚀 Como Executar o Projeto
 Para executar um teste de funcionamento foi solicitado à IA a criação de um código em PYthon com os seguintes requisitos: 
 
-1- Informações ao usuário: nome,email,senha_hash,status_usuario,origem_cadastro,device_token,ultimo_login,data_cadastro e data_atualizacao;
-2- Conectar ao Banco de dados MySQL da Aiven e gravar na tabela usuarios da base dados aprova_mat; e
-3- Utilizar o aquivo .env, o qual está no mesmo diretório do ca.pem.
+1- Informações ao usuário: nome,email,senha_hash,status_usuario,origem_cadastro,device_token,ultimo_login,data_cadastro e data_atualizacao;  
+2- Conectar ao Banco de dados MySQL da Aiven e gravar na tabela usuarios da base dados aprova_mat; e  
+3- Utilizar o aquivo .env, o qual está no mesmo diretório do ca.pem.  
 
 Foi gerado o arquivo "cadastro_usuario.py", o qual está adicionado ao repósitorio na pasta BD_AprovaMat.
 
