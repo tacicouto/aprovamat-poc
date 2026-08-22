@@ -133,6 +133,32 @@ Para conectar ao banco em nuvem do Aiven, o projeto exige o uso de SSL:
 3. Renomeie ou crie o seu arquivo `.env` baseando-se no `.env.example`.
 
 
+### 2. Inicializando o Banco de Dados
+
+## 🚀 Como Executar o Projeto
+Para executar um teste de funcionamento foi solicitado à IA a criação de um código em PYthon com os seguintes requisitos: 
+
+1- Informações ao usuário: nome,email,senha_hash,status_usuario,origem_cadastro,device_token,ultimo_login,data_cadastro e data_atualizacao;
+2- Conectar ao Banco de dados MySQL da Aiven e gravar na tabela usuarios da base dados aprova_mat; e
+3- Utilizar o aquivo .env, o qual está no mesmo diretório do ca.pem.
+
+Foi gerado o arquivo "cadastro_usuario.py", o qual está adicionado ao repósitorio na pasta BD_AprovaMat.
+
+O teste foi executado por meio a execução do script no terminal do VS Code, dentro da pasta BD_AprovaMat.
+
+Após adicionar os dados solicitados pelo programa, foi consultado por meio do Workbench a seguinte informação na tabela usuarios da base dados aprova_mat, no Banco de Dados criado no Aiven.
+
+**id:	1  
+**nome:	Jorge Aragão  
+**email:	jaragao@gmail.com  
+**senha_hash:	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92  
+**status_usuario:	ativo  
+**origem_cadastro:	web  
+**device_token:	a1b2c3d4e5  
+**ultimo_login:	2026-08-22 09:04:42  
+**data_cadastro:	2026-08-22 09:04:42  
+**data_atualizacao:	2026-08-22 09:04:42 
+
 ##### Como Criar a Conta e Ativar o Serviço (naõ é necessário para utilizar o banco de dados no projeto)
     1. Acesse o site oficial do Aiven e faça o seu cadastro gratuito (não exige cartão de crédito).
     2. Dentro do console do Aiven, clique em Create service (Criar serviço).
