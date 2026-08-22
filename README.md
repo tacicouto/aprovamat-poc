@@ -99,7 +99,7 @@ Para conectar a aplicação ao banco de dados, é necessário a utilização do 
 DB_HOST=mysql-29052f0f-aprovamat26.c.aivencloud.com
 DB_PORT=22464
 DB_USER=avnadmin
-DB_PASS=Adicione sua senha aqui.(Solictar a senha ao Administrador do Banco de Dados)
+DB_PASS=Adicione sua senha aqui.(Solicitar a senha ao Administrador do Banco de Dados)
 DB_NAME=aprova_mat
 DB_SSL_CA=ca.pem
 ```
