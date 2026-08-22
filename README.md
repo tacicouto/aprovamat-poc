@@ -148,16 +148,16 @@ O teste foi executado por meio a execução do script no terminal do VS Code, de
 
 Após adicionar os dados solicitados pelo programa, foi consultado por meio do Workbench a seguinte informação na tabela usuarios da base dados aprova_mat, no Banco de Dados criado no Aiven.
 
-**id:	1  
-**nome:	Jorge Aragão  
-**email:	jaragao@gmail.com  
-**senha_hash:	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92  
-**status_usuario:	ativo  
-**origem_cadastro:	web  
-**device_token:	a1b2c3d4e5  
-**ultimo_login:	2026-08-22 09:04:42  
-**data_cadastro:	2026-08-22 09:04:42  
-**data_atualizacao:	2026-08-22 09:04:42 
+**id:	1  88**
+**nome:	Jorge Aragão**
+**email:	jaragao@gmail.com**  
+**senha_hash:	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92**  
+**status_usuario:	ativo**  
+**origem_cadastro:	web** 
+**device_token:	a1b2c3d4e5**  
+**ultimo_login:	2026-08-22 09:04:42**  
+**data_cadastro:	2026-08-22 09:04:42**  
+**data_atualizacao:	2026-08-22 09:04:42** 
 
 ##### Como Criar a Conta e Ativar o Serviço (naõ é necessário para utilizar o banco de dados no projeto)
     1. Acesse o site oficial do Aiven e faça o seu cadastro gratuito (não exige cartão de crédito).
