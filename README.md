@@ -84,23 +84,23 @@ A plataforma escolhida foi a Aiven, um serviço de dados em nuvem que gerencia t
 https://aiven.io/free-mysql-database
 
 ### Resumo do Serviço 
-Serviço: MySQL - Version MySQL 8.4.8
-Name: mysql-29052f0f
-Service tier: free
-Cloud: North America
-Plan: Free 1 GB, 1 CPU, 1 GB RAM, 1 GB storage, Backups for disaster recovery 
-Organization: Eight Bits Organization
-Project: aprovamat26
-Database: aprova_mat
+Serviço: MySQL - Version MySQL 8.4.8; 
+Name: mysql-29052f0f; 
+Service tier: free; 
+Cloud: North America; 
+Plan: Free 1 GB, 1 CPU, 1 GB RAM, 1 GB storage, Backups for disaster recovery; 
+Organization: Eight Bits Organization; 
+Project: aprovamat26; 
+Database: aprova_mat; 
 
 ### Connection Information
-Service URI: mysql:// CLICK_TO:REVEAL_PASSWORD @mysql-29052f0f-aprovamat26.c.aivencloud.com:22464/defaultdb?ssl-mode=REQUIRED
-Database name: defaultdb
-Host: mysql-29052f0f-aprovamat26.c.aivencloud.com
-Port: 22464
-User: avnadmin
-Password: **********
-SSL mode: REQUIRED
+Service URI: mysql:// CLICK_TO:REVEAL_PASSWORD @mysql-29052f0f-aprovamat26.c.aivencloud.com:22464/defaultdb?ssl-mode=REQUIRED; 
+Database name: defaultdb; 
+Host: mysql-29052f0f-aprovamat26.c.aivencloud.com; 
+Port: 22464; 
+User: avnadmin; 
+Password: **********; 
+SSL mode: REQUIRED; 
 CA certificate: Show
 
 ### BD_AprovaMat 
@@ -133,7 +133,7 @@ Para conectar ao banco em nuvem do Aiven, o projeto exige o uso de SSL:
 3. Renomeie ou crie o seu arquivo `.env` baseando-se no `.env.example`.
 
 
-##### Como Criar a Conta e Ativar o Serviço
+##### Como Criar a Conta e Ativar o Serviço (naõ é necessário para utilizar o banco de dados no projeto)
     1. Acesse o site oficial do Aiven e faça o seu cadastro gratuito (não exige cartão de crédito).
     2. Dentro do console do Aiven, clique em Create service (Criar serviço).
     3. Selecione a opção MySQL.
