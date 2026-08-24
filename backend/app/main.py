@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from app.controllers.questao_controller import router as questao_router
 from app.controllers.resposta_controller import router as resposta_router
 from app.controllers.evolucao_controller import router as evolucao_router
+from app.controllers.evolucao_controller import router as evolucao_router
 
 app = FastAPI(
     title="AprovaMat API",
@@ -28,4 +29,5 @@ def health():
 
 app.include_router(questao_router)
 app.include_router(resposta_router)
+app.include_router(evolucao_router)
 app.include_router(evolucao_router)
