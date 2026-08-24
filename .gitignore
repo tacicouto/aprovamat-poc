@@ -1,5 +1,40 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente
 .env
-venv/
+.env.local
+
+# Build
+dist/
+build/
+
+# Banco de dados local (se SQLite)
+*.sqlite
+*.db
+
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual Python
+venv/
+.venv/
+
+# Variáveis de ambiente
+.env
+
+# Certificado local
 ca.pem
