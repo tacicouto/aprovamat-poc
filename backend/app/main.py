@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from app.controllers.questao_controller import router as questao_router
+
 
 app = FastAPI(
     title="AprovaMat API",
@@ -21,3 +23,6 @@ def health():
     return {
         "status": "ok"
     }
+
+
+app.include_router(questao_router)
