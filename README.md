@@ -176,3 +176,54 @@ O projeto AprovaMat possui em seu banco de dados três tabelas:
 As quais, estão presentes na figura abaixo:  
 
 <img width="1307" height="716" alt="figura_tabelas" src="https://github.com/user-attachments/assets/bf23f600-04ee-4686-8be9-5949b059f501" />
+  
+### 4. Código SQL para o MYSQL Workbench utilizado na construção das tabelas: <br> 
+#### Primeira etapa: Criação do Banco de Dados "aprova_mat" e da tabela "tabela_usuários":<br> 
+-- 1. Cria o banco de dados com o nome que você escolher (pode alterar aqui) <br> 
+CREATE DATABASE aprova_mat;<br> 
+-- 1. Garante que estamos usando o banco de dados correto<br> 
+USE aprova_mat;<br> 
+-- 2. Cria a tabela de usuários adaptada para múltiplas plataformas<br> 
+-- 1. Cria a base de dados<br> 
+CREATE DATABASE aprova_mat;<br> 
+-- 2. Seleciona a base de dados para uso<br> 
+USE aprova_mat;<br> 
+-- 3. Cria apenas a tabela de usuários<br> 
+CREATE TABLE usuarios (<br>
+    id INT AUTO_INCREMENT PRIMARY KEY,<br>
+    nome VARCHAR(100) NOT NULL,<br>
+    email VARCHAR(100) UNIQUE NOT NULL,<br>
+    senha_hash VARCHAR(255) NOT NULL,              -- Para senhas criptografadas<br>
+    status_usuario ENUM('ativo', 'inativo', 'pendente') DEFAULT 'pendente',<br>
+    -- Campos para suporte a iOS, Android, Windows e Linux<br>
+    origem_cadastro ENUM('ios', 'android', 'windows', 'linux', 'web') NOT NULL,<br>
+    device_token VARCHAR(255) NULL,                -- Para notificações Push em celulares<br>
+    ultimo_login DATETIME NULL,<br>
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP<br>
+);<br>
+#### Segunda e última etapa: Criação das tabelas "tabela_questoes" e "tabela_respostas":<br> 
+-- 1. Criação da Tabela de Questões (Ajustada para o MySQL) <br>
+CREATE TABLE questoes (<br>
+    id INT AUTO_INCREMENT PRIMARY KEY,<br>
+    assunto VARCHAR(100) NOT NULL,                  -- Ex: 'Geometria', 'Funções'<br>
+    enunciado TEXT NOT NULL,                        -- A pergunta em si<br>
+    -- No MySQL simplificado, separamos as alternativas em colunas fixas para a PoC<br>
+    alternativa_a VARCHAR(255) NOT NULL,<br>
+    alternativa_b VARCHAR(255) NOT NULL,<br>
+    alternativa_c VARCHAR(255) NOT NULL,<br>
+    alternativa_d VARCHAR(255) NOT NULL,<br>
+    -- Deve conter exatamente o texto de uma das alternativas acima <br>
+    correta VARCHAR(255) NOT NULL                   <br>
+);<br>
+-- 2. Criação da Tabela de Respostas (Inicia vazia, preenchida pelo backend)<br>
+CREATE TABLE respostas (<br>
+    id INT AUTO_INCREMENT PRIMARY KEY,<br>
+    usuario_id INT NOT NULL,                       -- ID do usuário que respondeu<br>
+    questao_id INT NOT NULL,                       -- ID da questão respondida<br>
+    acertou BOOLEAN NOT NULL,                      -- Substitui o verdadeiro/falso (TRUE ou FALSE)<br>
+    data_resposta DATE NOT NULL,                   -- Armazena a data (Ex: '2026-08-19')<br>    
+    -- Chaves estrangeiras para ligar o ecossistema e garantir a integridade dos dados<br>
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,<br>
+    FOREIGN KEY (questao_id) REFERENCES questoes(id) ON DELETE CASCADE<br>
+);<br>
