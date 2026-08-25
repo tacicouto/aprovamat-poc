@@ -135,8 +135,8 @@ Para conectar ao banco em nuvem do Aiven, o projeto exige o uso de SSL:
 
 ### 2. Inicializando o Banco de Dados
 
-## 🚀 Como Executar o Projeto
-Para executar um teste de funcionamento foi solicitado à IA a criação de um código em PYthon com os seguintes requisitos: 
+#### 🚀 Como testar o acesso ao Banco de Dados:
+Para executar um teste de funcionamento foi criado um código em PYthon com os seguintes requisitos: 
 
 1- Informações ao usuário: nome,email,senha_hash,status_usuario,origem_cadastro,device_token,ultimo_login,data_cadastro e data_atualizacao;  
 2- Conectar ao Banco de dados MySQL da Aiven e gravar na tabela usuarios da base dados aprova_mat; e  
