@@ -166,3 +166,13 @@ Após adicionar os dados solicitados pelo programa, foi consultado por meio do W
     4. Escolha um provedor de nuvem (como AWS ou Google Cloud) e a região geográfica mais próxima do Brasil (ex: southamerica-east1 em São Paulo, se disponível no plano gratuito).
     5. Na escolha do plano de preço, selecione a categoria Free (Gratuito). O plano gratuito oferece 1 GB de armazenamento e 1 GB de RAM.
     6. Dê um nome ao seu serviço e clique em Create service. Aguarde alguns minutos até que o status mude para Running (Executando).
+
+### 3. Construção das tabelas utilizadas no Banco de Dados MySQL.
+
+O projeto AprovaMat possui em seu banco de dados três tabelas:  
+1- tabela_questoes;  
+2- tabela_respostas; e  
+3- tabela_usuarios.  
+As quais, estão presentes na figura abaixo:  
+
+<img width="1307" height="716" alt="figura_tabelas" src="https://github.com/user-attachments/assets/bf23f600-04ee-4686-8be9-5949b059f501" />
