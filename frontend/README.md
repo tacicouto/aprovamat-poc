@@ -54,16 +54,6 @@ Com `USE_MOCK: true` (padrão atual), as telas funcionam com dados fictícios/si
 
 As 7 questões vêm da tabela `questoes` do banco real (fornecidas pelo Cesar), cobrindo os assuntos **Geometria** e **Funções**. Os ids duplicados (4, 5 e 6, cópias de 1, 2 e 3) foram removidos do mock.
 
-## Pendências conhecidas (dependem de outras partes do grupo)
-
-| Pendência | Status | Time responsável |
-|---|---|---|
-| Endpoint `POST /login` | Não implementado no backend ainda | Liângela / Luciana |
-| CORS no backend | Não configurado — bloqueia chamadas reais do navegador | Liângela / Luciana |
-| Campo `diasConsecutivos` | Ausente no schema `EvolucaoUsuario` real | Liângela / Luciana |
-| Questões duplicadas no banco (ids 4, 5, 6) | Aguardando correção | Cesar |
-
-Até que esses pontos sejam resolvidos, o frontend segue em **modo simulado** para permitir demonstração completa do fluxo (inclusive para o vídeo pitch da PoC).
 
 ## Acessibilidade e responsividade
 
