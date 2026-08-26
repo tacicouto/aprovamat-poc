@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AprovaMat — Entrar</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="tide-bg"></div>
+
+<main class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18C6 12 9 6 12 6C15 6 15 14 12 14C9 14 9 10 12 10C15 10 18 16 20 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      AprovaMat
+    </div>
+  </div>
+
+  <section class="card" style="margin-top: 8px;">
+    <span class="eyebrow">Bem-vinda de volta</span>
+    <h1>Vamos com calma, um passo de cada vez.</h1>
+    <p>Entre para continuar seu diagnóstico de matemática. Sem pressa — o AprovaMat acompanha o seu ritmo.</p>
+
+    <div id="alertaErro" class="alert-box" role="alert"></div>
+
+    <form id="formLogin" novalidate>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="mariana@email.com" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="••••••••" autocomplete="current-password" required />
+        <div class="field-hint">Modo de demonstração: qualquer e-mail e senha preenchidos funcionam.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="btnEntrar">Entrar</button>
+    </form>
+
+    <p class="center-note">Ainda não tem conta? <a href="#" class="link">Criar conta</a></p>
+  </section>
+</main>
+
+<div class="badge-mock" id="badgeMock">modo simulado</div>
+
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AprovaMat — Diagnóstico</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="tide-bg"></div>
+
+<main class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18C6 12 9 6 12 6C15 6 15 14 12 14C9 14 9 10 12 10C15 10 18 16 20 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      AprovaMat
+    </div>
+  </div>
+
+  <span class="eyebrow" id="assuntoAtual">Carregando…</span>
+  <h1 style="margin-bottom: 4px;">Diagnóstico inicial</h1>
+  <p id="nomeUsuario"></p>
+
+  <div class="tide-track"><div class="tide-fill" id="tideFill" style="width:0%"></div></div>
+  <div class="progress-label">
+    <span id="progressoTexto">Questão 0 de 0</span>
+    <span id="acertosTexto">0 acertos</span>
+  </div>
+
+  <section class="card" id="cardQuestao">
+    <div id="carregando">
+      <div class="skeleton" style="width:70%; margin-bottom:14px;"></div>
+      <div class="skeleton" style="width:100%; margin-bottom:8px;"></div>
+      <div class="skeleton" style="width:90%; margin-bottom:20px;"></div>
+      <div class="skeleton" style="width:100%; height:48px; margin-bottom:10px;"></div>
+      <div class="skeleton" style="width:100%; height:48px; margin-bottom:10px;"></div>
+    </div>
+
+    <div id="conteudoQuestao" style="display:none;">
+      <h2 id="enunciado"></h2>
+      <div id="listaAlternativas"></div>
+
+      <div class="feedback-box" id="caixaFeedback">
+        <div class="feedback-title" id="tituloFeedback"></div>
+        <p id="textoExplicacao"></p>
+      </div>
+
+      <button class="btn btn-primary" id="btnProxima" style="display:none; margin-top: var(--space-2);">
+        Próxima questão
+      </button>
+    </div>
+  </section>
+</main>
+
+<div class="badge-mock" id="badgeMock">modo simulado</div>
+
+<script src="js/api.js"></script>
+<script src="js/diagnostico.js"></script>
+</body>
+</html>
