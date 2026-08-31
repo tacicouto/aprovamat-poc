@@ -4,7 +4,6 @@ Prova de Conceito (PoC) de uma plataforma de apoio à aprendizagem de
 Matemática, com diagnóstico inicial, feedback imediato e
 acompanhamento da evolução do estudante.
 
-
 Sobre o projeto
 
 O AprovaMat é uma prova de conceito de uma solução educacional
@@ -17,12 +16,13 @@ estudante do 3º ano do Ensino Médio, e concentra-se no fluxo essencial:
 Login → Diagnóstico → Resolução de questões → Feedback imediato →
 Painel de evolução
 
-O objetivo da PoC é demonstrar a experiência inicial do estudante no AprovaMat, desde o acesso à plataforma até a realização do diagnóstico, o recebimento de feedback e a visualização de sua evolução.
+O objetivo da PoC é demonstrar a experiência inicial do estudante no
+AprovaMat, desde o acesso à plataforma até a realização do diagnóstico,
+o recebimento de feedback e a visualização de sua evolução.
 
 Critério de sucesso da PoC
 
-A PoC cumpre seu objetivo quando o estudante consegue, sem intervenção
-manual no banco:
+A PoC cumpre seu objetivo quando o estudante consegue:
 
 acessar o sistema;
 
@@ -80,25 +80,29 @@ Cálculo de evolução a partir do banco;
 
 Controle de usuários;
 
-CORS e configuração para comunicação entre frontend e API;
+Configuração da comunicação entre frontend e API;
 
 Evolução adaptativa e recursos de personalização.
 
 Jornada do estudante
 
-flowchart LR
-    A[Login] --> B[Diagnóstico]
-    B --> C[Responder questão]
-    C --> D[Feedback imediato]
-    D --> E{Há mais questões?}
-    E -->|Sim| C
-    E -->|Não| F[Painel de evolução]
+Login
+  ↓
+Diagnóstico
+  ↓
+Responder questão
+  ↓
+Feedback imediato
+  ↓
+Há mais questões?
+  ├── Sim → Responder próxima questão
+  └── Não → Painel de evolução
 
 Arquitetura
 
 O projeto está organizado em três camadas principais:
 
-AprovaMat
+AprovaMat/
 ├── frontend/       → Interface web
 ├── backend/        → API REST em FastAPI
 ├── banco_dados/    → Documentação e recursos do MySQL
@@ -108,23 +112,23 @@ Visão geral da comunicação
 
 ┌──────────────────────┐
 │      Frontend        │
-│ HTML + CSS + JS      │
+│   HTML + CSS + JS    │
 └──────────┬───────────┘
            │ HTTP/JSON
            ▼
 ┌──────────────────────┐
 │       FastAPI        │
-│ Controllers          │
-│ Services             │
-│ Repositories         │
+│    Controllers      │
+│      Services       │
+│    Repositories     │
 └──────────┬───────────┘
            │ SQLAlchemy
            ▼
 ┌──────────────────────┐
 │        MySQL         │
-│ usuarios             │
-│ questoes             │
-│ respostas            │
+│      usuarios        │
+│       questoes       │
+│      respostas       │
 └──────────────────────┘
 
 Backend
@@ -140,8 +144,8 @@ backend/app/
 ├── core/          → Configuração de banco
 └── main.py        → Aplicação FastAPI
 
-Essa separação facilita a evolução da PoC para uma aplicação de
-produção.
+Essa separação facilita a evolução da PoC para uma aplicação mais
+completa.
 
 Tecnologias
 
@@ -161,34 +165,34 @@ Banco em nuvem        Aiven
 
 Como executar
 
-1. Pré-requisitos
+Pré-requisitos
 
 Para executar a aplicação completa, recomenda-se:
 
-Python 3.10+
+Python 3.10 ou superior;
 
-pip
+pip;
 
-MySQL 8+
+MySQL 8 ou superior;
 
-Git
+Git;
 
 navegador moderno;
 
-opcionalmente VS Code, DBeaver ou MySQL Workbench.
+opcionalmente, VS Code, DBeaver ou MySQL Workbench.
 
-2. Executando somente o frontend
+Executando somente o frontend
 
-Passo 1 --- entre na pasta
+Essa é a maneira mais simples de demonstrar a PoC, pois o frontend pode
+utilizar dados simulados.
+
+Entre na pasta:
 
 cd frontend
 
-Passo 2 --- abra index.html
+Abra o arquivo index.html no navegador.
 
-É possível abrir o arquivo diretamente no navegador.
-
-Para uma experiência mais próxima de um ambiente web real,
-recomenda-se utilizar um servidor HTTP local, por exemplo:
+Para utilizar um servidor HTTP local:
 
 python -m http.server 5500
 
@@ -198,11 +202,8 @@ http://localhost:5500
 
 Modo mock
 
-O arquivo:
-
-frontend/js/api.js
-
-possui a configuração:
+O arquivo frontend/js/api.js possui uma configuração que permite
+executar o frontend sem backend:
 
 const CONFIG = {
   USE_MOCK: true,
@@ -210,13 +211,10 @@ const CONFIG = {
   LATENCIA_SIMULADA_MS: 500
 };
 
-Com:
+Com USE_MOCK: true, o frontend funciona sem necessidade de conexão com
+a API ou com o banco de dados.
 
-USE_MOCK: true
-
-o frontend funciona sem backend e sem banco de dados.
-
-Isso é especialmente útil para apresentações, testes de UX e
+Esse modo é especialmente útil para apresentações, testes de interface e
 demonstração do fluxo da PoC.
 
 Executando o backend
@@ -227,12 +225,12 @@ cd backend
 
 2. Crie um ambiente virtual
 
-Windows
+Windows:
 
 python -m venv .venv
 .venv\Scripts\activate
 
-Linux/macOS
+Linux/macOS:
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -243,7 +241,8 @@ pip install -r requirements.txt
 
 4. Configure as variáveis de ambiente
 
-O backend utiliza as seguintes variáveis:
+O backend utiliza variáveis de ambiente para a configuração do banco de
+dados. Um exemplo:
 
 DB_HOST=localhost
 DB_PORT=3306
@@ -251,7 +250,8 @@ DB_USER=seu_usuario
 DB_PASSWORD=sua_senha
 DB_NAME=aprova_mat
 
-Não publique senhas, tokens ou outras credenciais no GitHub.
+Importante: não publique senhas, tokens ou outras credenciais de
+acesso no GitHub.
 
 5. Inicie a API
 
@@ -263,15 +263,15 @@ A API ficará disponível em:
 
 http://localhost:8000
 
-Documentação automática do FastAPI:
+A documentação automática do FastAPI estará disponível em:
 
 http://localhost:8000/docs
 
-Documentação alternativa:
+A documentação alternativa estará disponível em:
 
 http://localhost:8000/redoc
 
-Teste de saúde:
+Teste de saúde
 
 GET http://localhost:8000/health
 
@@ -300,7 +300,7 @@ Armazena os usuários da plataforma.
 
 questoes
 
-Armazena:
+Armazena informações como:
 
 assunto;
 
@@ -312,7 +312,7 @@ resposta correta.
 
 respostas
 
-Registra:
+Registra informações como:
 
 usuário;
 
@@ -330,38 +330,16 @@ Banco em nuvem
 O projeto possui documentação para utilização do Aiven como serviço
 de MySQL.
 
-As instruções estão em:
-
-banco_dados/README.md
-
-Segurança
-
-O certificado ca.pem é utilizado para conexão segura com o serviço de
-banco, conforme a configuração do ambiente.
-
-Nunca publique senhas ou credenciais reais no repositório.
-
-Para ambientes compartilhados ou de produção, recomenda-se utilizar:
-
-variáveis de ambiente;
-
-secrets do provedor de hospedagem;
-
-rotação periódica de credenciais;
-
-princípio do menor privilégio;
-
-conexão TLS/SSL devidamente configurada.
+As instruções estão em banco_dados/README.md.
 
 API
 
-O contrato funcional da API está documentado em:
+O contrato funcional da API está documentado em
+docs/API.md.
 
-docs/API.md
+Principais endpoints
 
-Endpoints principais
-
-Método     Endpoint                   Finalidade
+Método   Endpoint                   Finalidade
 
 GET      /                        Verifica se o backend está funcionando
 GET      /health                  Health check
@@ -384,6 +362,8 @@ Para apresentar a PoC rapidamente:
 
 1. Abra o frontend
 
+Abra:
+
 frontend/index.html
 
 2. Faça login
@@ -396,17 +376,17 @@ As questões são apresentadas uma a uma.
 
 4. Observe o feedback
 
-O sistema informa:
+O sistema apresenta informações sobre:
 
-se a resposta está correta;
+acerto ou erro;
 
-qual é a alternativa correta;
+alternativa correta;
 
-uma explicação da solução.
+explicação da solução.
 
 5. Consulte a evolução
 
-Ao final, o sistema apresenta:
+Ao final, o sistema apresenta informações como:
 
 percentual de acertos;
 
@@ -420,6 +400,8 @@ Frontend
 
 O frontend não utiliza framework ou etapa de build.
 
+Estrutura principal:
+
 frontend/
 ├── index.html
 ├── diagnostico.html
@@ -432,20 +414,19 @@ frontend/
     ├── diagnostico.js
     └── evolucao.js
 
-A camada api.js foi desenhada como uma fachada de comunicação,
-permitindo alternar entre mock e API real sem modificar a lógica das
-telas.
+A camada api.js foi estruturada para permitir a alternância entre o
+modo mock e a API real sem modificar a lógica principal das telas.
 
-Para utilizar o backend real:
+Para utilizar a API real:
 
 const CONFIG = {
   USE_MOCK: false,
   BASE_URL: "http://localhost:8000"
 };
 
-O backend atual ainda não implementa o endpoint /login; portanto, o
-fluxo completo integrado ainda requer a implementação da autenticação
-real.
+A integração completa ainda depende da implementação da autenticação
+real e da conclusão dos demais pontos de integração entre frontend e
+backend.
 
 Documentação
 
@@ -460,22 +441,41 @@ frontend/README.md         Funcionamento detalhado do frontend
 
 Estado atual e próximos passos
 
-Esta versão deve ser entendida como PoC/MVP técnico, e não como
-produto pronto para produção.
+Esta versão deve ser entendida como uma Prova de Conceito (PoC),
+concentrada na demonstração da experiência inicial do estudante.
 
+Como evolução futura da plataforma, destacam-se:
+
+integração completa entre frontend e backend;
+
+implementação de autenticação e gerenciamento de usuários;
+
+aprimoramento do banco de questões e do acompanhamento do
+desempenho;
+
+expansão do painel de evolução;
+
+implementação de recomendações personalizadas de aprendizagem;
+
+criação de testes automatizados;
+
+preparação da infraestrutura para um ambiente de produção;
+
+desenvolvimento de recursos de aprendizagem adaptativa e,
+futuramente, integração com recursos de Inteligência Artificial.
 
 Segurança e privacidade
 
-Como o AprovaMat trata dados potencialmente relacionados a estudantes, a
-evolução para produção deve considerar desde o início requisitos de
-segurança, privacidade e proteção de dados pessoais, especialmente
-os princípios e obrigações aplicáveis da LGPD (Lei nº 13.709/2018).
+Como o AprovaMat pode tratar dados relacionados a estudantes, uma futura
+evolução para ambiente de produção deverá considerar requisitos de
+segurança, privacidade e proteção de dados pessoais, incluindo os
+princípios e obrigações aplicáveis da LGPD (Lei nº 13.709/2018).
 
-Recomenda-se, entre outros pontos:
+Entre as boas práticas recomendadas estão:
 
 não armazenar senhas em texto puro;
 
-utilizar hashing apropriado para senhas;
+utilizar mecanismos seguros de proteção de senhas;
 
 não versionar arquivos .env;
 
@@ -485,46 +485,11 @@ utilizar HTTPS;
 
 controlar permissões de acesso;
 
-registrar eventos relevantes de segurança;
-
-minimizar a coleta de dados pessoais;
-
-definir política de retenção e descarte;
-
-estabelecer mecanismos de auditoria.
-
-Contribuindo
-
-Contribuições são bem-vindas.
-
-Uma sugestão de fluxo:
-
-# 1. Faça um fork do projeto
-
-# 2. Clone seu fork
-git clone https://github.com/tacicouto/aprovamat-poc.git
-
-# 3. Entre no projeto
-cd aprovamat-poc
-
-# 4. Crie uma branch
-git checkout -b feat/minha-melhoria
-
-# 5. Faça suas alterações
-git add .
-git commit -m "feat: descreve a melhoria"
-
-# 6. Envie para seu fork
-git push origin feat/minha-melhoria
-
-# 7. Abra um Pull Request no GitHub
-
-Para mudanças maiores, recomenda-se discutir previamente a proposta com
-os responsáveis pelo projeto.
+minimizar a coleta de dados pessoais.
 
 Equipe
 
-Projeto AprovaMat --- Prova de Conceito.
+Projeto AprovaMat --- Prova de Conceito
 
 Repositório:
 
@@ -541,13 +506,12 @@ projeto.
 
 Visão de evolução
 
-A arquitetura atual foi construída para permitir que a PoC evolua
-progressivamente de um fluxo demonstrativo para uma plataforma
-educacional orientada por dados.
+A arquitetura da PoC permite que o AprovaMat evolua progressivamente de
+um fluxo demonstrativo para uma plataforma educacional orientada por
+dados.
 
-O próximo salto de valor do AprovaMat está menos na quantidade de
-funcionalidades e mais na capacidade de transformar cada resposta do
-estudante em informação pedagógica útil:
+Uma possibilidade de evolução é transformar cada resposta do estudante
+em informação pedagógica útil:
 
 Resposta
    ↓
@@ -564,5 +528,5 @@ Nova evidência de aprendizagem
 Evolução do estudante
 
 Esse ciclo pode constituir a base de um futuro motor adaptativo de
-aprendizagem, capaz de personalizar a experiência de estudo a partir
-das evidências de desempenho de cada estudante.
+aprendizagem, capaz de personalizar a experiência de estudo a partir das
+evidências de desempenho de cada estudante.
