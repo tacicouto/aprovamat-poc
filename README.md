@@ -23,6 +23,7 @@ Login  →  Diagnóstico inicial  →  Feedback comentado  →  Painel de evolu�
 
 ## Sumário
 
+- [Equipe](#equipe)
 - [Objetivo](#-objetivo)
 - [Persona e jornada](#-persona-e-jornada)
 - [Arquitetura](#-arquitetura)
@@ -36,7 +37,20 @@ Login  →  Diagnóstico inicial  →  Feedback comentado  →  Painel de evolu�
 - [Roadmap / fora do escopo](#-roadmap--fora-do-escopo)
 
 ---
+## Equipe
 
+Projeto desenvolvido pela equipe:
+
+- Cesar Alexandre Parazi
+- Larissa Ferreira de Oliveira
+- Larissa Queiroz de Almeida Silva
+- Liângela do Nascimento Mariano
+- Lucas Karam Toralles de Morais
+- Luciana Aparecida Ramalho
+- Samuel Santos Mendes
+- Taciana Michele Couto
+
+---
 ## Objetivo
 
 Validar, com o menor esforço possível, se o fluxo essencial do AprovaMat funciona de ponta a ponta: um estudante consegue **entrar no sistema**, **responder a um diagnóstico de nivelamento**, **receber feedback comentado** sobre suas respostas e **visualizar sua evolução** — tudo sem intervenção manual no banco de dados.
