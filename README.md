@@ -1,229 +1,568 @@
-# AprovaMat — Prova de Conceito (PoC)
+AprovaMat
 
-Projeto Integrador III — SENAC EAD, 2026.
-Professor: Adriano Milanez.
+Prova de Conceito (PoC) de uma plataforma de apoio à aprendizagem de
+Matemática, com diagnóstico inicial, feedback imediato e
+acompanhamento da evolução do estudante.
 
-## Objetivo
 
-O AprovaMat é uma plataforma híbrida (Web e Mobile) para apoiar estudantes
-de 15 a 30 anos na preparação de matemática para o ENEM, combatendo a
-ansiedade e a baixa proficiência através de microlearning, feedback
-imediato e acompanhamento de evolução.
+Sobre o projeto
 
-Esta PoC implementa o fluxo: **login → diagnóstico inicial → feedback
-comentado → painel de evolução**, conforme detalhado em
-[`docs/DEFINICAO_POC.md`](docs/DEFINICAO_POC.md).
+O AprovaMat é uma prova de conceito de uma solução educacional
+voltada ao apoio de estudantes no desenvolvimento de competências
+matemáticas.
 
-## Integrantes
+A PoC foi concebida a partir da jornada da persona Mariana Souza,
+estudante do 3º ano do Ensino Médio, e concentra-se no fluxo essencial:
 
-- [preencher] — Cesar Alexandre Parazi
-- [preencher] — Larissa Ferreira de Oliveira
-- [preencher] — Larissa Queiroz de Almeida Silva
-- [preencher] — Liângela do Nascimento Mariano
-- [preencher] — Lucas Karam Toralles de Morais
-- [preencher] — Luciana Aparecida Ramalho
-- [preencher] — Samuel Santos Mendes
-- [preencher] — Taciana Michele Couto
+Login → Diagnóstico → Resolução de questões → Feedback imediato →
+Painel de evolução
 
-## Estrutura do repositório
+O objetivo da PoC é demonstrar a experiência inicial do estudante no AprovaMat, desde o acesso à plataforma até a realização do diagnóstico, o recebimento de feedback e a visualização de sua evolução.
 
-```
-meu-projeto-integrador/
-├── frontend/        # Aplicação React (telas)
-├── backend/         # API Node/Express + banco de dados
-├── docs/
-│   ├── DEFINICAO_POC.md
-│   └── API.md        # contrato de endpoints
-└── README.md
-```
+Critério de sucesso da PoC
 
-## Tecnologias utilizadas
+A PoC cumpre seu objetivo quando o estudante consegue, sem intervenção
+manual no banco:
 
-- Frontend: [preencher — ex: React + Vite]
-- Backend: [preencher — ex: Node.js + Express]
-- Banco de dados: [preencher — ex: SQLite]
+acessar o sistema;
 
-## Como rodar o projeto
+responder ao diagnóstico;
 
-### Backend
-```bash
-cd backend
-npm install
-npm run dev
-```
-O servidor sobe em `http://localhost:3001`.
+receber feedback sobre a resposta;
 
-### Frontend
-```bash
+visualizar seu desempenho e sua evolução.
+
+O detalhamento funcional está em
+docs/DEFINICAO_POC.md.
+
+Funcionalidades
+
+Atualmente demonstradas
+
+Tela de login simplificada;
+
+Diagnóstico de Matemática;
+
+Questões organizadas por assunto;
+
+Alternativas de múltipla escolha;
+
+Correção imediata;
+
+Feedback explicativo;
+
+Indicador de progresso;
+
+Contagem de acertos durante o diagnóstico;
+
+Painel de evolução;
+
+Desempenho geral;
+
+Desempenho por assunto;
+
+Interface responsiva;
+
+Navegação por teclado e foco visual;
+
+Modo mock no frontend para demonstração sem necessidade de
+backend.
+
+Em desenvolvimento / integração
+
+Autenticação real;
+
+Integração completa entre frontend e backend;
+
+Persistência integral das respostas;
+
+Cálculo de evolução a partir do banco;
+
+Controle de usuários;
+
+CORS e configuração para comunicação entre frontend e API;
+
+Evolução adaptativa e recursos de personalização.
+
+Jornada do estudante
+
+flowchart LR
+    A[Login] --> B[Diagnóstico]
+    B --> C[Responder questão]
+    C --> D[Feedback imediato]
+    D --> E{Há mais questões?}
+    E -->|Sim| C
+    E -->|Não| F[Painel de evolução]
+
+Arquitetura
+
+O projeto está organizado em três camadas principais:
+
+AprovaMat
+├── frontend/       → Interface web
+├── backend/        → API REST em FastAPI
+├── banco_dados/    → Documentação e recursos do MySQL
+└── docs/           → Documentação funcional e contrato da API
+
+Visão geral da comunicação
+
+┌──────────────────────┐
+│      Frontend        │
+│ HTML + CSS + JS      │
+└──────────┬───────────┘
+           │ HTTP/JSON
+           ▼
+┌──────────────────────┐
+│       FastAPI        │
+│ Controllers          │
+│ Services             │
+│ Repositories         │
+└──────────┬───────────┘
+           │ SQLAlchemy
+           ▼
+┌──────────────────────┐
+│        MySQL         │
+│ usuarios             │
+│ questoes             │
+│ respostas            │
+└──────────────────────┘
+
+Backend
+
+O backend utiliza uma organização em camadas:
+
+backend/app/
+├── controllers/   → Rotas HTTP
+├── services/      → Regras de negócio
+├── repositories/  → Acesso aos dados
+├── schemas/       → Modelos de entrada/saída
+├── models/        → Modelos ORM
+├── core/          → Configuração de banco
+└── main.py        → Aplicação FastAPI
+
+Essa separação facilita a evolução da PoC para uma aplicação de
+produção.
+
+Tecnologias
+
+Camada                Tecnologia
+
+Frontend              HTML5
+Estilos               CSS3
+Lógica de interface   JavaScript
+Backend               Python
+API                   FastAPI
+Servidor ASGI         Uvicorn
+ORM                   SQLAlchemy
+Banco de dados        MySQL
+Driver MySQL          PyMySQL
+Configuração          python-dotenv / pydantic-settings
+Banco em nuvem        Aiven
+
+Como executar
+
+1. Pré-requisitos
+
+Para executar a aplicação completa, recomenda-se:
+
+Python 3.10+
+
+pip
+
+MySQL 8+
+
+Git
+
+navegador moderno;
+
+opcionalmente VS Code, DBeaver ou MySQL Workbench.
+
+2. Executando somente o frontend
+
+Passo 1 --- entre na pasta
+
 cd frontend
-npm install
-npm run dev
-```
-A aplicação sobe em `http://localhost:5173` (ou porta indicada no terminal).
 
-> Variáveis de ambiente (se necessárias): copiar `.env.example` para `.env`
-> em cada pasta e preencher os valores. [preencher se aplicável]
+Passo 2 --- abra index.html
 
-## Demonstração
+É possível abrir o arquivo diretamente no navegador.
 
-- Vídeo pitch (até 60s): [link do YouTube ou arquivo `demo_projeto.mp4`]
-- Prints das telas: [preencher, se optarem por prints em vez de vídeo]
+Para uma experiência mais próxima de um ambiente web real,
+recomenda-se utilizar um servidor HTTP local, por exemplo:
 
-## Documentação adicional
+python -m http.server 5500
 
-- [Definição da PoC](docs/DEFINICAO_POC.md)
-- [Contrato de API](docs/API.md)
+Depois acesse:
 
-## Banco de Dados
+http://localhost:5500
 
-Utilizaremos nesse projeto o banco de dados MySQL, o qual é disponibilizado gratuitamente por algumas plataformas de dados em nuvem, principalmente para testes, estudos ou pequenos projetos.
-A plataforma escolhida foi a Aiven, um serviço de dados em nuvem que gerencia tecnologias de código aberto (como PostgreSQL, MySQL, Apache Kafka e OpenSearch) para empresas. O sistema facilita a criação, a segurança e a operação de bancos de dados e ferramentas de streaming em grandes provedores de nuvem e, também, disponibiliza planos gratuitos para estudos e pequenos projetos.
+Modo mock
 
+O arquivo:
 
-### Acesso ao Aiven:
-https://aiven.io/free-mysql-database
+frontend/js/api.js
 
-### Resumo do Serviço 
-Serviço: MySQL - Version MySQL 8.4.8; 
-Name: mysql-29052f0f; 
-Service tier: free; 
-Cloud: North America; 
-Plan: Free 1 GB, 1 CPU, 1 GB RAM, 1 GB storage, Backups for disaster recovery; 
-Organization: Eight Bits Organization; 
-Project: aprovamat26; 
-Database: aprova_mat; 
+possui a configuração:
 
-### Connection Information
-Service URI: mysql:// CLICK_TO:REVEAL_PASSWORD @mysql-29052f0f-aprovamat26.c.aivencloud.com:22464/defaultdb?ssl-mode=REQUIRED; 
-Database name: defaultdb; 
-Host: mysql-29052f0f-aprovamat26.c.aivencloud.com; 
-Port: 22464; 
-User: avnadmin; 
-Password: **********; 
-SSL mode: REQUIRED; 
-CA certificate: Show
+const CONFIG = {
+  USE_MOCK: true,
+  BASE_URL: "http://localhost:8000",
+  LATENCIA_SIMULADA_MS: 500
+};
 
-### BD_AprovaMat 
+Com:
 
-Como o banco de dados do Aiven fica hospedado na nuvem, ele fornece uma URL pública (Host) e uma porta de conexão. Qualquer programa ou aplicativo conectado à internet pode se comunicar com ele, independentemente do sistema operacional.
-Abaixo estão as instruções para configurar o ambiente de desenvolvimento local.
+USE_MOCK: true
 
-### 🛠️ Pré-requisitos e Ferramentas Recomendadas
-* **MySQL Server** (Versão 8.0 ou superior)
-* **MySQL Workbench** (ou DBeaver / ferramenta de sua preferência)
-* **Plano Gratuito de MySQL do Aiven** (O Aiven é uma plataforma de nuvem que oferece ferramentas de dados de código aberto (Open Source) de forma totalmente gerenciada.)
-* **VS Code** (Visual Studio Code)
+o frontend funciona sem backend e sem banco de dados.
 
-### 1. Variáveis de Ambiente (.env)
-As variáveis de ambiente funcionam exatamente em conjunto com o seu código Python. O arquivo .env atua como um "cofre de segurança" secreto ao lado do seu arquivo de código. O Python lê esse arquivo, carrega as credenciais para a memória do computador e as entrega para o conector do MySQL na hora de fazer o envio ou a requisição dos dados.
-Para conectar a aplicação ao banco de dados, é necessário a utilização do arquivo`.env` na raiz do seu projeto local (este arquivo **não** deve ser enviado ao GitHub) com as seguintes credenciais:
+Isso é especialmente útil para apresentações, testes de UX e
+demonstração do fluxo da PoC.
 
-```env
-DB_HOST=mysql-29052f0f-aprovamat26.c.aivencloud.com
-DB_PORT=22464
-DB_USER=avnadmin
-DB_PASS=Adicione sua senha aqui.(Solictar a senha ao Administrador do Banco de Dados)
+Executando o backend
+
+1. Entre na pasta
+
+cd backend
+
+2. Crie um ambiente virtual
+
+Windows
+
+python -m venv .venv
+.venv\Scripts\activate
+
+Linux/macOS
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+3. Instale as dependências
+
+pip install -r requirements.txt
+
+4. Configure as variáveis de ambiente
+
+O backend utiliza as seguintes variáveis:
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
 DB_NAME=aprova_mat
-DB_SSL_CA=ca.pem
-```
-### 🔑 Configuração de Segurança (SSL)
-Para conectar ao banco em nuvem do Aiven, o projeto exige o uso de SSL:
-1. Acesse o painel do Aiven e baixe o arquivo `ca.pem` (CA Certificate).
-2. Cole o arquivo `ca.pem` diretamente na raiz da pasta `BD_AprovaMat`.
-3. Renomeie ou crie o seu arquivo `.env` baseando-se no `.env.example`.
+
+Não publique senhas, tokens ou outras credenciais no GitHub.
+
+5. Inicie a API
+
+A partir da pasta backend:
+
+uvicorn app.main:app --reload --port 8000
+
+A API ficará disponível em:
+
+http://localhost:8000
+
+Documentação automática do FastAPI:
+
+http://localhost:8000/docs
+
+Documentação alternativa:
+
+http://localhost:8000/redoc
+
+Teste de saúde:
+
+GET http://localhost:8000/health
+
+Resposta esperada:
+
+{
+  "status": "ok"
+}
+
+Banco de dados
+
+A PoC utiliza MySQL e foi estruturada em torno de três entidades
+principais:
+
+usuarios
+   │
+   ├──────────────┐
+   ▼              ▼
+respostas ───── questoes
+
+Principais tabelas
+
+usuarios
+
+Armazena os usuários da plataforma.
+
+questoes
+
+Armazena:
+
+assunto;
+
+enunciado;
+
+alternativas;
+
+resposta correta.
+
+respostas
+
+Registra:
+
+usuário;
+
+questão;
+
+resultado da resposta;
+
+data da resposta.
+
+As respostas possuem relacionamento com usuários e questões por meio de
+chaves estrangeiras.
+
+Banco em nuvem
+
+O projeto possui documentação para utilização do Aiven como serviço
+de MySQL.
+
+As instruções estão em:
+
+banco_dados/README.md
+
+Segurança
+
+O certificado ca.pem é utilizado para conexão segura com o serviço de
+banco, conforme a configuração do ambiente.
+
+Nunca publique senhas ou credenciais reais no repositório.
+
+Para ambientes compartilhados ou de produção, recomenda-se utilizar:
+
+variáveis de ambiente;
+
+secrets do provedor de hospedagem;
+
+rotação periódica de credenciais;
+
+princípio do menor privilégio;
+
+conexão TLS/SSL devidamente configurada.
+
+API
+
+O contrato funcional da API está documentado em:
+
+docs/API.md
+
+Endpoints principais
+
+Método     Endpoint                   Finalidade
+
+GET      /                        Verifica se o backend está funcionando
+GET      /health                  Health check
+GET      /diagnostico             Retorna questões do diagnóstico
+POST     /diagnostico/responder   Registra e corrige uma resposta
+GET      /evolucao/{usuario_id}   Retorna evolução do estudante
+GET      /questoes                Lista questões
+POST     /questoes                Cria uma questão
+GET      /questoes/{questao_id}   Consulta uma questão
+PUT      /questoes/{questao_id}   Atualiza uma questão
+DELETE   /questoes/{questao_id}   Exclui uma questão
+
+A documentação interativa pode ser acessada em:
+
+http://localhost:8000/docs
+
+Fluxo de demonstração
+
+Para apresentar a PoC rapidamente:
+
+1. Abra o frontend
+
+frontend/index.html
+
+2. Faça login
+
+No modo mock, qualquer e-mail e senha preenchidos são aceitos.
+
+3. Responda ao diagnóstico
+
+As questões são apresentadas uma a uma.
+
+4. Observe o feedback
+
+O sistema informa:
+
+se a resposta está correta;
+
+qual é a alternativa correta;
+
+uma explicação da solução.
+
+5. Consulte a evolução
+
+Ao final, o sistema apresenta:
+
+percentual de acertos;
+
+total de questões respondidas;
+
+desempenho por assunto;
+
+indicador de sequência de estudos.
+
+Frontend
+
+O frontend não utiliza framework ou etapa de build.
+
+frontend/
+├── index.html
+├── diagnostico.html
+├── evolucao.html
+├── css/
+│   └── style.css
+└── js/
+    ├── api.js
+    ├── login.js
+    ├── diagnostico.js
+    └── evolucao.js
+
+A camada api.js foi desenhada como uma fachada de comunicação,
+permitindo alternar entre mock e API real sem modificar a lógica das
+telas.
+
+Para utilizar o backend real:
+
+const CONFIG = {
+  USE_MOCK: false,
+  BASE_URL: "http://localhost:8000"
+};
+
+O backend atual ainda não implementa o endpoint /login; portanto, o
+fluxo completo integrado ainda requer a implementação da autenticação
+real.
+
+Documentação
+
+Documento                                          Conteúdo
+
+docs/DEFINICAO_POC.md   Escopo, persona, jornada e
+critérios de sucesso
+
+docs/API.md                       Contrato da API
+
+frontend/README.md         Funcionamento detalhado do frontend
+
+Estado atual e próximos passos
+
+Esta versão deve ser entendida como PoC/MVP técnico, e não como
+produto pronto para produção.
 
 
-### 2. Inicializando o Banco de Dados
+Segurança e privacidade
 
-#### 🚀 Como testar o acesso ao Banco de Dados:
-Para executar um teste de funcionamento foi criado um código em PYthon com os seguintes requisitos: 
+Como o AprovaMat trata dados potencialmente relacionados a estudantes, a
+evolução para produção deve considerar desde o início requisitos de
+segurança, privacidade e proteção de dados pessoais, especialmente
+os princípios e obrigações aplicáveis da LGPD (Lei nº 13.709/2018).
 
-1- Informações ao usuário: nome,email,senha_hash,status_usuario,origem_cadastro,device_token,ultimo_login,data_cadastro e data_atualizacao;  
-2- Conectar ao Banco de dados MySQL da Aiven e gravar na tabela usuarios da base dados aprova_mat; e  
-3- Utilizar o aquivo .env, o qual está no mesmo diretório do ca.pem.  
+Recomenda-se, entre outros pontos:
 
-Foi gerado o arquivo "cadastro_usuario.py", o qual está adicionado ao repósitorio na pasta BD_AprovaMat.
+não armazenar senhas em texto puro;
 
-O teste foi executado por meio a execução do script no terminal do VS Code, dentro da pasta BD_AprovaMat.
+utilizar hashing apropriado para senhas;
 
-Após adicionar os dados solicitados pelo programa, foi consultado por meio do Workbench a seguinte informação na tabela usuarios da base dados aprova_mat, no Banco de Dados criado no Aiven.
+não versionar arquivos .env;
 
-**id:	1  88**
-**nome:	Jorge Aragão**
-**email:	jaragao@gmail.com**  
-**senha_hash:	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92**  
-**status_usuario:	ativo**  
-**origem_cadastro:	web** 
-**device_token:	a1b2c3d4e5**  
-**ultimo_login:	2026-08-22 09:04:42**  
-**data_cadastro:	2026-08-22 09:04:42**  
-**data_atualizacao:	2026-08-22 09:04:42** 
+não expor credenciais do banco;
 
-##### Como Criar a Conta e Ativar o Serviço (naõ é necessário para utilizar o banco de dados no projeto)
-    1. Acesse o site oficial do Aiven e faça o seu cadastro gratuito (não exige cartão de crédito).
-    2. Dentro do console do Aiven, clique em Create service (Criar serviço).
-    3. Selecione a opção MySQL.
-    4. Escolha um provedor de nuvem (como AWS ou Google Cloud) e a região geográfica mais próxima do Brasil (ex: southamerica-east1 em São Paulo, se disponível no plano gratuito).
-    5. Na escolha do plano de preço, selecione a categoria Free (Gratuito). O plano gratuito oferece 1 GB de armazenamento e 1 GB de RAM.
-    6. Dê um nome ao seu serviço e clique em Create service. Aguarde alguns minutos até que o status mude para Running (Executando).
+utilizar HTTPS;
 
-### 3. Construção das tabelas utilizadas no Banco de Dados MySQL.
+controlar permissões de acesso;
 
-O projeto AprovaMat possui em seu banco de dados três tabelas:  
-1- tabela_questoes;  
-2- tabela_respostas; e  
-3- tabela_usuarios.  
-As quais, estão presentes na figura abaixo:  
+registrar eventos relevantes de segurança;
 
-<img width="1307" height="716" alt="figura_tabelas" src="https://github.com/user-attachments/assets/bf23f600-04ee-4686-8be9-5949b059f501" />
-  
-### 4. Código SQL para o MYSQL Workbench utilizado na construção das tabelas: <br> 
-#### Primeira etapa: Criação do Banco de Dados "aprova_mat" e da tabela "tabela_usuários":<br> 
--- 1. Cria o banco de dados com o nome que você escolher (pode alterar aqui) <br> 
-CREATE DATABASE aprova_mat;<br> 
--- 1. Garante que estamos usando o banco de dados correto<br> 
-USE aprova_mat;<br> 
--- 2. Cria a tabela de usuários adaptada para múltiplas plataformas<br> 
--- 1. Cria a base de dados<br> 
-CREATE DATABASE aprova_mat;<br> 
--- 2. Seleciona a base de dados para uso<br> 
-USE aprova_mat;<br> 
--- 3. Cria apenas a tabela de usuários<br> 
-CREATE TABLE usuarios (<br>
-    id INT AUTO_INCREMENT PRIMARY KEY,<br>
-    nome VARCHAR(100) NOT NULL,<br>
-    email VARCHAR(100) UNIQUE NOT NULL,<br>
-    senha_hash VARCHAR(255) NOT NULL,              -- Para senhas criptografadas<br>
-    status_usuario ENUM('ativo', 'inativo', 'pendente') DEFAULT 'pendente',<br>
-    -- Campos para suporte a iOS, Android, Windows e Linux<br>
-    origem_cadastro ENUM('ios', 'android', 'windows', 'linux', 'web') NOT NULL,<br>
-    device_token VARCHAR(255) NULL,                -- Para notificações Push em celulares<br>
-    ultimo_login DATETIME NULL,<br>
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP<br>
-);<br>
-#### Segunda e última etapa: Criação das tabelas "tabela_questoes" e "tabela_respostas":<br> 
--- 1. Criação da Tabela de Questões (Ajustada para o MySQL) <br>
-CREATE TABLE questoes (<br>
-    id INT AUTO_INCREMENT PRIMARY KEY,<br>
-    assunto VARCHAR(100) NOT NULL,                  -- Ex: 'Geometria', 'Funções'<br>
-    enunciado TEXT NOT NULL,                        -- A pergunta em si<br>
-    -- No MySQL simplificado, separamos as alternativas em colunas fixas para a PoC<br>
-    alternativa_a VARCHAR(255) NOT NULL,<br>
-    alternativa_b VARCHAR(255) NOT NULL,<br>
-    alternativa_c VARCHAR(255) NOT NULL,<br>
-    alternativa_d VARCHAR(255) NOT NULL,<br>
-    -- Deve conter exatamente o texto de uma das alternativas acima <br>
-    correta VARCHAR(255) NOT NULL                   <br>
-);<br>
--- 2. Criação da Tabela de Respostas (Inicia vazia, preenchida pelo backend)<br>
-CREATE TABLE respostas (<br>
-    id INT AUTO_INCREMENT PRIMARY KEY,<br>
-    usuario_id INT NOT NULL,                       -- ID do usuário que respondeu<br>
-    questao_id INT NOT NULL,                       -- ID da questão respondida<br>
-    acertou BOOLEAN NOT NULL,                      -- Substitui o verdadeiro/falso (TRUE ou FALSE)<br>
-    data_resposta DATE NOT NULL,                   -- Armazena a data (Ex: '2026-08-19')<br>    
-    -- Chaves estrangeiras para ligar o ecossistema e garantir a integridade dos dados<br>
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,<br>
-    FOREIGN KEY (questao_id) REFERENCES questoes(id) ON DELETE CASCADE<br>
-);<br>
+minimizar a coleta de dados pessoais;
+
+definir política de retenção e descarte;
+
+estabelecer mecanismos de auditoria.
+
+Contribuindo
+
+Contribuições são bem-vindas.
+
+Uma sugestão de fluxo:
+
+# 1. Faça um fork do projeto
+
+# 2. Clone seu fork
+git clone https://github.com/tacicouto/aprovamat-poc.git
+
+# 3. Entre no projeto
+cd aprovamat-poc
+
+# 4. Crie uma branch
+git checkout -b feat/minha-melhoria
+
+# 5. Faça suas alterações
+git add .
+git commit -m "feat: descreve a melhoria"
+
+# 6. Envie para seu fork
+git push origin feat/minha-melhoria
+
+# 7. Abra um Pull Request no GitHub
+
+Para mudanças maiores, recomenda-se discutir previamente a proposta com
+os responsáveis pelo projeto.
+
+Equipe
+
+Projeto AprovaMat --- Prova de Conceito.
+
+Repositório:
+
+https://github.com/tacicouto/aprovamat-poc
+
+Licença
+
+A licença do projeto ainda não está definida.
+
+Antes da distribuição pública ou utilização em produção, recomenda-se
+definir formalmente a licença do código e, quando aplicável, as
+condições de uso dos conteúdos educacionais, questões e demais ativos do
+projeto.
+
+Visão de evolução
+
+A arquitetura atual foi construída para permitir que a PoC evolua
+progressivamente de um fluxo demonstrativo para uma plataforma
+educacional orientada por dados.
+
+O próximo salto de valor do AprovaMat está menos na quantidade de
+funcionalidades e mais na capacidade de transformar cada resposta do
+estudante em informação pedagógica útil:
+
+Resposta
+   ↓
+Diagnóstico
+   ↓
+Identificação de lacuna
+   ↓
+Recomendação
+   ↓
+Nova atividade
+   ↓
+Nova evidência de aprendizagem
+   ↓
+Evolução do estudante
+
+Esse ciclo pode constituir a base de um futuro motor adaptativo de
+aprendizagem, capaz de personalizar a experiência de estudo a partir
+das evidências de desempenho de cada estudante.
