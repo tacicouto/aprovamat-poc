@@ -204,7 +204,9 @@ Rotas protegidas exigem o header `Authorization: Bearer <token>`. Erros seguem o
 
 ## Demonstração
 
-- Vídeo pitch (até 60s) 
+[Assista ao vídeo pitch (60s) no YouTube](LINK AQUI)
+
+[![Assista ao vídeo pitch](LINK AQUI)](LINK AQUI)
 
 
 ## Roadmap / fora do escopo
