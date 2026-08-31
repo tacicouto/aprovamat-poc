@@ -33,7 +33,6 @@ Login  →  Diagnóstico inicial  →  Feedback comentado  →  Painel de evolu�
 - [Banco de dados](#-banco-de-dados)
 - [Contrato de API](#-contrato-de-api)
 - [Demonstração](#-demonstração)
-- [Equipe](#-equipe)
 - [Roadmap / fora do escopo](#-roadmap--fora-do-escopo)
 
 ---
@@ -193,16 +192,6 @@ Rotas protegidas exigem o header `Authorization: Bearer <token>`. Erros seguem o
 
 - Vídeo pitch (até 60s) 
 
-## Equipe
-
-Projeto desenvolvido pela equipe:
-
-- Cesar Alexandre Parazi
-- Larissa Ferreira de Oliveira
-- Larissa Queiroz de Almeida Silva
-- Liângela do Nascimento Mariano
-- Luciana Aparecida Ramalho
-- Taciana Michele Couto
 
 ## Roadmap / fora do escopo
 
