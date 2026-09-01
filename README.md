@@ -3,12 +3,6 @@
 > **Projeto Integrador III** — SENAC EAD, 2026
 > Professor: Adriano Milanez
 
-[![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)]()
-[![Licença](https://img.shields.io/badge/licença-acadêmico-lightgrey)]()
-[![Node](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)]()
-[![React](https://img.shields.io/badge/frontend-React-61DAFB?logo=react&logoColor=black)]()
-[![MySQL](https://img.shields.io/badge/database-MySQL%208.4-4479A1?logo=mysql&logoColor=white)]()
-
 O **AprovaMat** é uma plataforma híbrida (Web e Mobile) voltada a estudantes de 15 a 30 anos que estão se preparando para o **ENEM**. O objetivo é combater a ansiedade pré-vestibular e a baixa proficiência em matemática por meio de **microlearning**, **feedback imediato** e **acompanhamento de evolução**.
 
 Esta PoC (Prova de Conceito) implementa a fatia mínima e funcional do produto, cobrindo o fluxo:
@@ -73,11 +67,23 @@ A PoC foi construída em torno de uma persona única, escolhida por cobrir diret
 ## Arquitetura
 
 ```
-┌──────────────┐        HTTP/JSON        ┌──────────────┐        SQL        ┌──────────────┐
-│   Frontend    │  ───────────────────▶  │   Backend     │  ─────────────▶  │  MySQL (Aiven) │
-│  React + Vite │  ◀───────────────────  │ Node.js + API │  ◀─────────────  │   aprova_mat   │
-└──────────────┘                         └──────────────┘                   └──────────────┘
-   :5173                                     :3001                          nuvem (SSL/TLS)
+┌─────────────────────────┐
+│        Frontend         │
+│ HTML + CSS + JavaScript │
+└────────────┬────────────┘
+             │ HTTP / JSON
+             ▼
+┌─────────────────────────┐
+│         Backend         │
+│    Python + FastAPI     │
+└────────────┬────────────┘
+             │ SQL
+             ▼
+┌─────────────────────────┐
+│      MySQL / Aiven      │
+│       aprova_mat        │
+└─────────────────────────┘
+
 ```
 
 O backend expõe uma API REST consumida pelo frontend; o contrato de rotas está formalizado em [`docs/API.md`](docs/API.md), permitindo que frontend e backend evoluam em paralelo usando um mock com o mesmo formato.
@@ -86,8 +92,8 @@ O backend expõe uma API REST consumida pelo frontend; o contrato de rotas está
 
 | Camada | Tecnologia |
 |---|---|
-| Frontend | React + Vite |
-| Backend | Node.js + Express |
+| Frontend | HTML + CSS + JavaScript |
+| Backend | Python + FastAPI + SQLAlchemy + PyMySQL |
 | Banco de dados | MySQL 8.4 (hospedado na [Aiven](https://aiven.io/free-mysql-database), plano gratuito) |
 | Scripts auxiliares | Python (utilitário de carga/teste de usuários) |
 
@@ -95,21 +101,39 @@ O backend expõe uma API REST consumida pelo frontend; o contrato de rotas está
 
 ```
 aprovamat-poc/
-├── frontend/          # Aplicação React (telas de login, diagnóstico, feedback e evolução)
-├── backend/           # API Node/Express que serve o frontend
-├── banco_dados/        # Scripts e utilitários de conexão com o MySQL (Aiven)
+├── frontend/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── api.js
+│   │   ├── login.js
+│   │   ├── diagnostico.js
+│   │   └── evolucao.js
+│   ├── index.html
+│   ├── diagnostico.html
+│   ├── evolucao.html
+│   └── README.md
+│
+├── backend/
+│   ├── app/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   └── main.py
+│   ├── .env.example
+│   └── requirements.txt
+│
+├── banco_dados/
+│   └── scripts e configurações relacionadas ao banco
+│
 ├── docs/
-│   ├── DEFINICAO_POC.md   # Persona, jornada, telas e escopo da PoC
-│   └── API.md             # Contrato de endpoints (request/response)
+│   ├── DEFINICAO_POC.md
+│   └── API.md
+│
+├── .gitignore
 └── README.md
+
 ```
-
-## Pré-requisitos
-
-- [Node.js](https://nodejs.org/) 18 ou superior + npm
-- Acesso a um banco **MySQL** (local ou instância gratuita na Aiven — veja a seção [Banco de dados](#-banco-de-dados))
-- Opcional: **MySQL Workbench** ou **DBeaver** para inspecionar as tabelas
-- Opcional: **Python 3** para rodar os scripts utilitários da pasta `banco_dados/`
 
 ## Como rodar o projeto
 
@@ -124,11 +148,10 @@ cd aprovamat-poc
 
 ```bash
 cd backend
-npm install
-npm run dev
+python -m venv .venv
 ```
 
-O servidor sobe em **http://localhost:3001**.
+O servidor sobe em **http://localhost:8000**.
 
 ### 3. Frontend
 
@@ -136,11 +159,11 @@ Em outro terminal:
 
 ```bash
 cd frontend
-npm install
-npm run dev
+python -m http.server 5500
+
 ```
 
-A aplicação sobe em **http://localhost:5173** (ou na porta indicada no terminal).
+A aplicação estará disponível em http://localhost:5500.
 
 ### 4. Variáveis de ambiente
 
