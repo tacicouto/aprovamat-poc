@@ -229,7 +229,7 @@ Rotas protegidas exigem o header `Authorization: Bearer <token>`. Erros seguem o
 
 [Assista ao vídeo pitch (60s) no YouTube](https://www.youtube.com/watch?v=5vGM1Z-imsM)
 
-[![Assista ao vídeo pitch](LINK AQUI)](LINK AQUI)
+[![Assista ao vídeo pitch](https://www.youtube.com/watch?v=5vGM1Z-imsM)](https://www.youtube.com/watch?v=5vGM1Z-imsM)
 
 
 ## Roadmap / fora do escopo
