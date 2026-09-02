@@ -227,7 +227,7 @@ Rotas protegidas exigem o header `Authorization: Bearer <token>`. Erros seguem o
 
 ## Demonstração
 
-[Assista ao vídeo pitch (60s) no YouTube](LINK AQUI)
+[Assista ao vídeo pitch (60s) no YouTube](https://www.youtube.com/watch?v=5vGM1Z-imsM)
 
 [![Assista ao vídeo pitch](LINK AQUI)](LINK AQUI)
 
